@@ -33,10 +33,10 @@ from docopt import docopt
 
 from multiprocessing import Pool
 import itertools
+
+## from here
 import sys
 sys.path.append('./')
-sys.path.append('../')
-## from here
 from cloudphinder.io_tools import (
     parse_filepath,
     read_particle_data,
@@ -92,7 +92,6 @@ def CloudPhind(filepath, options, particle_data=None, loud=True):
 
     ## load the particle data from disk if we weren't provided any
     if particle_data is None:
-        print("particle_data is None on line 95 in cloudphinder.py")
         particle_data = read_particle_data(
             snapnum,
             snapdir,
@@ -102,7 +101,6 @@ def CloudPhind(filepath, options, particle_data=None, loud=True):
             softening=float(options["--softening"]),
             units_already_physical=bool(options["--units_already_physical"]),
         )
-        print("some error on line 105 in cloudphinder.py")
 
         ## skip this snapshot, there probably weren't enough particles
         if particle_data is None:
@@ -150,7 +148,6 @@ def CloudPhind(filepath, options, particle_data=None, loud=True):
         dat_outfilename,
         overwrite,
     )
-    
 
     return True
 
